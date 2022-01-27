@@ -1,27 +1,32 @@
 class Thermostat {
-    constructor(temperatue) {
-        this.temperatue = 20
+    constructor() {
+        this.temperature = 20
+        this.maximumTemperature = 25
     }
 
     getTemperature() {
-        return this.temperatue;
+        return this.temperature;
     }
 
     up() {
-        let maximumTemperatue = 25
-        if (this.temperatue >= maximumTemperatue) {
+        if (this.temperature >= this.maximumTemperature) {
             console.log('Max Temp Reached')}
         else 
-        this.temperatue += 1
-        return this.temperatue
+            this.temperature += 1
+        return this.temperature
     }
 
     down() {
-        if (this.temperatue === 10) {
+        if (this.temperature === 10) {
             console.log('Min Temp Reached')}
         else 
-        this.temperatue -= 1
-        return this.temperatue
+        this.temperature -= 1
+        return this.temperature
+    }
+
+    setPowerSavingMode(status) {
+        this.maximumTemperature = 32
+        return this.maximumTemperature
     }
 }
 

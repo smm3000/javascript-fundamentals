@@ -17,7 +17,7 @@ describe('Thermostat default temp, up & down', () => {
     });
 });
 
-describe('minimum possible temperate', () => {
+describe('minimum possible temperature', () => {
     it('does not go below 10', () => {
         const thermostat = new Thermostat();
         thermostat.down()
@@ -45,5 +45,27 @@ describe('maximum possible temperate', () => {
         thermostat.up()
         thermostat.up()
         expect(thermostat.getTemperature()).toBeLessThanOrEqual(25);
+    });
+});
+
+describe('PSM off - maximum possible temperature', () => {
+    it('temp does not exceed 32 when PSM is off', () => {
+        const thermostat = new Thermostat();
+        thermostat.setPowerSavingMode(false);
+        thermostat.up()
+        thermostat.up()
+        thermostat.up()
+        thermostat.up()
+        thermostat.up()
+        thermostat.up()
+        thermostat.up()
+        thermostat.up()
+        thermostat.up()
+        thermostat.up()
+        thermostat.up()
+        thermostat.up()
+        thermostat.up()
+        thermostat.up()
+        expect(thermostat.getTemperature()).toBeLessThanOrEqual(32);
     });
 });
