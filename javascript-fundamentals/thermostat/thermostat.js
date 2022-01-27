@@ -1,6 +1,6 @@
 class Thermostat {
     constructor(temperatue) {
-        this.temperatue = 20;
+        this.temperatue = 20
     }
 
     getTemperature() {
@@ -8,6 +8,10 @@ class Thermostat {
     }
 
     up() {
+        let maximumTemperatue = 25
+        if (this.temperatue >= maximumTemperatue) {
+            console.log('Max Temp Reached')}
+        else 
         this.temperatue += 1
         return this.temperatue
     }

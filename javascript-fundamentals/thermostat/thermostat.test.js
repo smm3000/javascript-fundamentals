@@ -8,7 +8,7 @@ describe('Thermostat default temp, up & down', () => {
     });
 
     it('the temp can be increased', () => {
-        expect(thermostat.up()).toBe(21)
+        expect(thermostat.up()).toBe(21);
     });
 
     it('the temp can be decreased', () => {
@@ -19,9 +19,6 @@ describe('Thermostat default temp, up & down', () => {
 
 describe('minimum possible temperate', () => {
     it('does not go below 10', () => {
-        // if you initialize a new instance it starts with 20
-        // you will have to bring down the value by using down
-        // the test could be that getTemperature is not less than 10
         const thermostat = new Thermostat();
         thermostat.down()
         thermostat.down()
@@ -37,3 +34,16 @@ describe('minimum possible temperate', () => {
         expect(thermostat.getTemperature()).toBeGreaterThanOrEqual(10);
     })
 })
+
+describe('maximum possible temperate', () => {
+    it('temp does not exceed 25 when PSM is on', () => {
+        const thermostat = new Thermostat();
+        thermostat.up()
+        thermostat.up()
+        thermostat.up()
+        thermostat.up()
+        thermostat.up()
+        thermostat.up()
+        expect(thermostat.getTemperature()).toBeLessThanOrEqual(25);
+    });
+});
