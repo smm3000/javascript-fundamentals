@@ -69,3 +69,10 @@ describe('PSM off - maximum possible temperature', () => {
         expect(thermostat.getTemperature()).toBeLessThanOrEqual(32);
     });
 });
+
+describe('reset functionality', () => {
+    it('returns the temperature to 20', () => {
+        const thermostat = new Thermostat();
+        expect(thermostat.reset()).toBe(20);
+    });
+});
