@@ -1,6 +1,6 @@
 const Thermostat = require('./thermostat');
 
-describe('Thermostat', () => {
+describe('Thermostat default temp, up & down', () => {
     const thermostat = new Thermostat();
 
     it('shows the current default temp is at 20', () => {
@@ -8,13 +8,32 @@ describe('Thermostat', () => {
     });
 
     it('the temp can be increased', () => {
-        thermostat.up()
-        expect(thermostat.getTemperature()).toBe(21)
+        expect(thermostat.up()).toBe(21)
     });
 
     it('the temp can be decreased', () => {
-        thermostat.down()
-        thermostat.down()
-        expect(thermostat.getTemperature()).toBe(19)
+        const thermostat = new Thermostat();
+        expect(thermostat.down()).toBe(19);
     });
 });
+
+describe('minimum possible temperate', () => {
+    it('does not go below 10', () => {
+        // if you initialize a new instance it starts with 20
+        // you will have to bring down the value by using down
+        // the test could be that getTemperature is not less than 10
+        const thermostat = new Thermostat();
+        thermostat.down()
+        thermostat.down()
+        thermostat.down()
+        thermostat.down()
+        thermostat.down()
+        thermostat.down()
+        thermostat.down()
+        thermostat.down()
+        thermostat.down()
+        thermostat.down()
+        thermostat.down()
+        expect(thermostat.getTemperature()).toBeGreaterThanOrEqual(10);
+    })
+})
